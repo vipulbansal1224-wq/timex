@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
-import { Hero } from '@/components/Hero';
+import { HeroSlider } from '@/components/HeroSlider';
 import { ProductCatalog } from '@/components/ProductCatalog';
 import { AboutSection } from '@/components/AboutSection';
 import { QualityCertifications } from '@/components/QualityCertifications';
@@ -11,6 +10,7 @@ import { Testimonials } from '@/components/Testimonials';
 import { ContactSection } from '@/components/ContactSection';
 import { RFQModal } from '@/components/RFQModal';
 import { Footer } from '@/components/Footer';
+import { HOME_SLIDES } from '@/data/sliders';
 
 export default function Home() {
   const [rfqModalOpen, setRfqModalOpen] = useState(false);
@@ -29,14 +29,11 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-grow">
-        {/* High-Impact Hero Banner */}
-        <Hero onOpenRFQ={() => handleOpenRFQ()} />
+        {/* 4-Slide Interactive Hero Banner */}
+        <HeroSlider slides={HOME_SLIDES} onOpenRFQ={handleOpenRFQ} />
 
-        {/* Featured Products Catalog Section (Limited to 6 items with link to /products) */}
-        <ProductCatalog
-          limit={6}
-          onOpenRFQ={handleOpenRFQ}
-        />
+        {/* Featured Products Catalog Section */}
+        <ProductCatalog limit={6} onOpenRFQ={handleOpenRFQ} />
 
         {/* 50+ Year Company Heritage & Legacy */}
         <AboutSection />
