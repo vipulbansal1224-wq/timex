@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { ShieldCheck, MapPin, Phone, Mail, Award, ArrowUp } from 'lucide-react';
+import Link from 'next/link';
+import { ShieldCheck, Award, ArrowUp } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/products';
 
 export const Footer: React.FC = () => {
@@ -18,7 +19,7 @@ export const Footer: React.FC = () => {
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-900 flex items-center justify-center font-mono text-white font-black text-xl shadow-lg border border-blue-400/30">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-800 flex items-center justify-center font-mono text-black font-black text-xl shadow-lg border border-amber-400/40">
                 TW
               </div>
               <div>
@@ -45,11 +46,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">Navigation</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Product Catalog</a></li>
-              <li><a href="#about" className="hover:text-blue-400 transition-colors">Company Overview</a></li>
-              <li><a href="#quality" className="hover:text-blue-400 transition-colors">Quality Standards</a></li>
-              <li><a href="#reviews" className="hover:text-blue-400 transition-colors">Buyer Ratings & Reviews</a></li>
-              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact Factory</a></li>
+              <li><Link href="/" className="hover:text-amber-400 transition-colors">Home Page</Link></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">Products Catalog</Link></li>
+              <li><Link href="/about" className="hover:text-amber-400 transition-colors">Company Overview</Link></li>
+              <li><Link href="/quality" className="hover:text-amber-400 transition-colors">Quality Standards</Link></li>
+              <li><Link href="/reviews" className="hover:text-amber-400 transition-colors">Buyer Ratings & Reviews</Link></li>
+              <li><Link href="/contact" className="hover:text-amber-400 transition-colors">Contact Factory</Link></li>
             </ul>
           </div>
 
@@ -57,12 +59,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">Product Categories</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Mild Steel Hex Bolts</a></li>
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Heavy MS Hex Nuts</a></li>
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Carriage Cup Head Bolts</a></li>
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">HB Wire Coils (Hard Bright)</a></li>
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Galvanized Binding Wire</a></li>
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Plain & Spring Washers</a></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">Mild Steel Hex Bolts</Link></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">Heavy MS Hex Nuts</Link></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">Carriage Cup Head Bolts</Link></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">HB Wire Coils (Hard Bright)</Link></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">Galvanized Binding Wire</Link></li>
+              <li><Link href="/products" className="hover:text-amber-400 transition-colors">Plain & Spring Washers</Link></li>
             </ul>
           </div>
 

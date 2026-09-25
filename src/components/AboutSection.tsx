@@ -14,7 +14,7 @@ export const AboutSection: React.FC = () => {
           {/* Left Column - Company Story */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-800 text-blue-300 text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-800 text-amber-300 text-xs font-semibold uppercase tracking-wider">
               <History className="w-4 h-4 text-amber-400" />
               <span>50+ Years Industrial Heritage (Est. 1972)</span>
             </div>
@@ -24,7 +24,7 @@ export const AboutSection: React.FC = () => {
             </h2>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Founded in 1972 under the visionary leadership of <strong className="text-white">{COMPANY_INFO.proprietor}</strong>, <strong className="text-blue-400">Timexo Wire (India)</strong> has grown into one of Punjab’s most prominent manufacturers and stockists of cold forged Mild Steel Hex Bolts, Heavy Duty Nuts, Hard Bright (HB) Wire, and Industrial Fasteners.
+              Founded in 1972 under the visionary leadership of <strong className="text-white">{COMPANY_INFO.proprietor}</strong>, <strong className="text-amber-400">Timexo Wire (India)</strong> has grown into one of Punjab’s most prominent manufacturers and stockists of cold forged Mild Steel Hex Bolts, Heavy Duty Nuts, Hard Bright (HB) Wire, and Industrial Fasteners.
             </p>
 
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
@@ -34,7 +34,7 @@ export const AboutSection: React.FC = () => {
             {/* Feature List Grid */}
             <div className="grid sm:grid-cols-2 gap-4 pt-2">
               <div className="bg-industrial-950/80 p-4 rounded-xl border border-slate-800 flex items-start gap-3">
-                <Factory className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                <Factory className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-white font-bold text-sm">Advanced Cold Forging</h4>
                   <p className="text-xs text-slate-400">High precision high-speed bolt headers and nut formers.</p>
@@ -102,13 +102,13 @@ export const AboutSection: React.FC = () => {
 
                 <div className="flex justify-between items-center bg-industrial-950 p-3 rounded-xl border border-slate-800">
                   <span className="text-slate-400">Monthly Processing Capacity</span>
-                  <span className="font-bold text-blue-400">{COMPANY_INFO.monthlyCapacity}</span>
+                  <span className="font-bold text-amber-400">{COMPANY_INFO.monthlyCapacity}</span>
                 </div>
               </div>
 
               {/* Verified Certificate Banner */}
-              <div className="bg-gradient-to-r from-blue-950 to-indigo-950 p-4 rounded-xl border border-blue-800/80 text-center">
-                <p className="text-xs text-blue-200 font-medium">
+              <div className="bg-gradient-to-r from-amber-950 to-industrial-950 p-4 rounded-xl border border-amber-800/80 text-center">
+                <p className="text-xs text-amber-200 font-medium">
                   Approved supplier for heavy infrastructure, electrical towers, solar frame structures, and automotive OEM components across India.
                 </p>
               </div>

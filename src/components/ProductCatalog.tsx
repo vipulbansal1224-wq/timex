@@ -1,23 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, Filter, Star, Eye, Send, FileSpreadsheet, Check } from 'lucide-react';
+import Link from 'next/link';
+import { Search, Star, Eye, Send, FileSpreadsheet, ArrowRight } from 'lucide-react';
 import { PRODUCTS, Product } from '@/data/products';
-import Image from 'next/image';
 
 interface ProductCatalogProps {
-  onSelectProduct: (product: Product) => void;
   onOpenRFQ: (productName?: string) => void;
+  limit?: number;
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({
-  onSelectProduct,
   onOpenRFQ,
+  limit,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const filteredProducts = PRODUCTS.filter((product) => {
+  let filteredProducts = PRODUCTS.filter((product) => {
     const matchesCategory =
       selectedCategory === 'all' || product.category === selectedCategory;
     const matchesSearch =
@@ -28,13 +28,17 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
     return matchesCategory && matchesSearch;
   });
 
+  if (limit && limit > 0) {
+    filteredProducts = filteredProducts.slice(0, limit);
+  }
+
   return (
     <section id="products" className="py-20 bg-industrial-950 relative border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-800/80 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/80 border border-amber-800/80 text-amber-400 text-xs font-semibold uppercase tracking-wider">
             <FileSpreadsheet className="w-3.5 h-3.5" />
             <span>Industrial Product Catalog</span>
           </div>
@@ -58,7 +62,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 placeholder="Search Hex Bolt, M10, HB Wire..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-industrial-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-industrial-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-500 transition-colors"
               />
             </div>
 
@@ -68,7 +72,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onClick={() => setSelectedCategory('all')}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === 'all'
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                    ? 'bg-amber-500 text-black font-bold shadow-lg shadow-amber-500/20'
                     : 'bg-industrial-950 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
@@ -78,7 +82,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onClick={() => setSelectedCategory('bolts')}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === 'bolts'
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                    ? 'bg-amber-500 text-black font-bold shadow-lg shadow-amber-500/20'
                     : 'bg-industrial-950 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
@@ -88,7 +92,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onClick={() => setSelectedCategory('nuts')}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === 'nuts'
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                    ? 'bg-amber-500 text-black font-bold shadow-lg shadow-amber-500/20'
                     : 'bg-industrial-950 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
@@ -98,7 +102,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onClick={() => setSelectedCategory('wires')}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === 'wires'
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                    ? 'bg-amber-500 text-black font-bold shadow-lg shadow-amber-500/20'
                     : 'bg-industrial-950 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
@@ -108,7 +112,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onClick={() => setSelectedCategory('washers')}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
                   selectedCategory === 'washers'
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                    ? 'bg-amber-500 text-black font-bold shadow-lg shadow-amber-500/20'
                     : 'bg-industrial-950 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >
@@ -128,7 +132,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 setSearchQuery('');
                 setSelectedCategory('all');
               }}
-              className="mt-4 px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg"
+              className="mt-4 px-4 py-2 bg-amber-500 text-black text-xs font-bold rounded-lg"
             >
               Reset Filters
             </button>
@@ -154,7 +158,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                       <span className="text-slate-400 font-normal">({product.reviewsCount})</span>
                     </div>
 
-                    <div className="absolute top-3 right-3 bg-blue-950/90 text-blue-300 text-xs px-2.5 py-1 rounded-md border border-blue-800 font-mono font-medium">
+                    <div className="absolute top-3 right-3 bg-amber-950/90 text-amber-300 text-xs px-2.5 py-1 rounded-md border border-amber-800 font-mono font-medium">
                       MOQ: {product.minOrderQuantity}
                     </div>
                   </div>
@@ -162,9 +166,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   {/* Body Info */}
                   <div className="p-5 space-y-3">
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
+                      <Link
+                        href={`/products/${product.id}`}
+                        className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors leading-snug"
+                      >
                         {product.name}
-                      </h3>
+                      </Link>
                     </div>
 
                     <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
@@ -210,17 +217,17 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => onSelectProduct(product)}
+                    <Link
+                      href={`/products/${product.id}`}
                       className="px-3 py-2 rounded-xl bg-industrial-800 hover:bg-industrial-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center justify-center gap-1.5 transition-colors"
                     >
-                      <Eye className="w-3.5 h-3.5 text-blue-400" />
+                      <Eye className="w-3.5 h-3.5 text-amber-400" />
                       <span>Tech Specs</span>
-                    </button>
+                    </Link>
                     
                     <button
                       onClick={() => onOpenRFQ(product.name)}
-                      className="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md shadow-blue-600/20 flex items-center justify-center gap-1.5 transition-colors"
+                      className="px-3 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold shadow-md shadow-amber-500/20 flex items-center justify-center gap-1.5 transition-colors"
                     >
                       <Send className="w-3.5 h-3.5" />
                       <span>Get Quote</span>
@@ -229,6 +236,18 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {limit && PRODUCTS.length > limit && (
+          <div className="text-center pt-12">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-sm shadow-xl shadow-amber-500/20 transition-all"
+            >
+              <span>View All Products in Catalog ({PRODUCTS.length})</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         )}
 
